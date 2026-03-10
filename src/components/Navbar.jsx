@@ -27,19 +27,19 @@ export default function Navbar({ onSearch }) {
 
   return (
     <>
-      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? 'bg-cream/95 backdrop-blur-md shadow-sm border-b border-forest-100' : 'bg-transparent'}`}>
+      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? 'bg-cream/95 backdrop-blur-md shadow-sm border-b border-forest-100' : 'bg-white/20 backdrop-blur-sm'}`}>
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           {/* Logo */}
           <div className="flex items-center gap-2">
-            <LocalFloristOutlinedIcon className="text-forest-700" sx={{ fontSize: 28 }} />
-            <span className="font-display text-2xl font-bold text-forest-900 tracking-wide">Verdant</span>
-            <span className="font-accent italic text-earth-500 text-sm ml-1 hidden sm:block">– Plant Boutique</span>
+            <LocalFloristOutlinedIcon className={`${scrolled ? 'text-forest-700' : 'text-white'}`} sx={{ fontSize: 28 }} />
+            <span className={`font-display text-2xl font-bold ${scrolled ? 'text-forest-900' : 'text-white'} tracking-wide`}>Verdant</span>
+            <span className={`font-accent italic ${scrolled ? 'text-earth-500' : 'text-white/90'} text-sm ml-1 hidden sm:block`}>– Plant Boutique</span>
           </div>
 
           {/* Nav links */}
           <div className="hidden md:flex items-center gap-8">
             {['Shop', 'About', 'Care Guide', 'Blog'].map(link => (
-              <a key={link} href="#" className="font-body text-forest-800 hover:text-forest-600 transition-colors text-sm tracking-wide">
+              <a key={link} href="#" className={`font-body ${scrolled ? 'text-forest-800 hover:text-forest-600' : 'text-white hover:text-white/80'} transition-colors text-sm tracking-wide`}>
                 {link}
               </a>
             ))}
@@ -64,14 +64,14 @@ export default function Navbar({ onSearch }) {
             ) : (
               <Tooltip title="Search">
                 <IconButton onClick={() => setSearchOpen(true)} size="small">
-                  <SearchIcon className="text-forest-700" />
+                  <SearchIcon className={scrolled ? "text-forest-700" : "text-white"} />
                 </IconButton>
               </Tooltip>
             )}
             <Tooltip title="Cart">
               <IconButton onClick={() => setIsCartOpen(true)}>
                 <Badge badgeContent={count} color="success">
-                  <ShoppingCartOutlinedIcon className="text-forest-700" />
+                  <ShoppingCartOutlinedIcon className={scrolled ? "text-forest-700" : "text-white"} />
                 </Badge>
               </IconButton>
             </Tooltip>
